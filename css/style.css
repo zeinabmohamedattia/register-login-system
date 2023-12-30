@@ -1,0 +1,49 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../imgs/dark-blue.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#home {
+    height: 100vh;
+}
+
+h1 {
+    color: #939b9d;
+}
+
+.group {
+    box-shadow: -5px 2px 30px -9px rgba(255, 254, 254, 0.9); 
+    background-color: #24353faf; 
+    border-top-left-radius: 35%;
+    border-bottom-right-radius: 35%;
+}
+
+input {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+input::placeholder{
+      color: rgb(255, 248, 248) !important;
+}
+
+button, a {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: transparent;
+    color: white;
+    border-color: #17a2b8;
+
+}
+.w-65{
+    width: 65%;
+}
