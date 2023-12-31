@@ -13,15 +13,15 @@ var sessionUser = document.querySelector('#sessionUser')
 var newUrl = '';
 var pathparts = location.pathname.split('/');
 var baseURL = ''
+
 for (var i = 0; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
-function changeUrl(pathEnd) {
-    if (baseURL == '/') {
-        location.replace('https://' + location.hostname + `${pathEnd}`)
 
-    } else {
+function changeUrl(pathEnd) {
+   {
         location.replace(baseURL + `${pathEnd}`)
+        console.log('2')
 
     }
     // newUrl = baseURL + `${pathEnd}`
