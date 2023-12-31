@@ -17,9 +17,16 @@ for (var i = 0; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
 function changeUrl(pathEnd) {
-    newUrl = baseURL + `${pathEnd}`
-    window.location.assign(
-        newUrl);
+    if (baseURL == '/') {
+        location.replace('https://' + location.hostname + `${pathEnd}`)
+
+    } else {
+        location.replace(baseURL + `${pathEnd}`)
+
+    }
+    // newUrl = baseURL + `${pathEnd}`
+    // window.location.assign(
+    //     newUrl);
 
 }
 // ______________________________________________REGISTER_____________________________________________________
