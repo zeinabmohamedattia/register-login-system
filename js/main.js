@@ -10,14 +10,13 @@ var users;
 var sessionUser = document.querySelector('#sessionUser')
 // ______________________________________________URL_____________________________________________________
 
-var newUrl = '';
 var pathparts = location.pathname.split('/');
 var baseURL = ''
 
 for (var i = 0; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
-
+console.log(baseURL)
 function changeUrl(pathEnd) {
    {
         location.replace(baseURL + `${pathEnd}`)
@@ -29,7 +28,7 @@ function changeUrl(pathEnd) {
     //     newUrl);
 
 
-    
+
 }
 // ______________________________________________REGISTER_____________________________________________________
 
