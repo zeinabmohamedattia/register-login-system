@@ -28,6 +28,8 @@ function changeUrl(pathEnd) {
     // window.location.assign(
     //     newUrl);
 
+
+    
 }
 // ______________________________________________REGISTER_____________________________________________________
 
