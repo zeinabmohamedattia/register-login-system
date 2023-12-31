@@ -32,7 +32,7 @@ if (localStorage.getItem('allUsers')) {
 
 
 function register() {
-    if (isEmptySignup() && validateEmail() && isEmailExist()) {
+    // if (isEmptySignup() && validateEmail() && isEmailExist()) {
         var user = {
             userName: signupName.value,
             userEmail: signupEmail.value,
@@ -45,9 +45,10 @@ function register() {
             changeUrl('/index.html')
         }, '1000')
 
-    }
-
 }
+    
+
+// }
 
 function isEmptySignup() {
 
@@ -62,6 +63,7 @@ function isEmptySignup() {
 function validateEmail() {
     var regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (regex.test(signupEmail.value)) {
+
         return true
     } else {
         validationMsg.innerHTML = `<span class="text-danger m-3">please, Enter a valid email</span>`
