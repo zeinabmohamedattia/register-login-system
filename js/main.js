@@ -17,9 +17,11 @@ for (var i = 0; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
 console.log(baseURL)
+console.log(location.hostname)
 function changeUrl(pathEnd) {
    {
-        location.replace(baseURL + `${pathEnd}`)
+        // location.replace(baseURL + `${pathEnd}`)
+        location.replace('https://' + baseURL + location.hostname + `${pathEnd}`)
         console.log('2')
 
     }
