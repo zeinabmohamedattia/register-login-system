@@ -16,13 +16,21 @@ var baseURL = ''
 for (var i = 0; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
-console.log(baseURL)
-console.log(location.hostname)
+// console.log(baseURL)
+console.log(location.pathname)
 function changeUrl(pathEnd) {
-   {
-        // location.replace(baseURL + `${pathEnd}`)
-        location.replace('https://' + location.hostname + baseURL + `${pathEnd}`)
-        console.log('2')
+    {
+        if (baseURL == '/') {
+            location.replace('https://' + location.hostname + `${pathEnd}`)
+
+        } else {
+            location.replace(baseURL + `${pathEnd}`)
+
+        }
+
+        // // location.replace(baseURL + `${pathEnd}`)
+        // location.replace( baseURL +   `${pathEnd}`)
+        // console.log('2')
 
     }
     // newUrl = baseURL + `${pathEnd}`
