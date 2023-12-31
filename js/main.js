@@ -21,7 +21,7 @@ console.log(location.hostname)
 function changeUrl(pathEnd) {
    {
         // location.replace(baseURL + `${pathEnd}`)
-        location.replace('https://' + baseURL + location.hostname + `${pathEnd}`)
+        location.replace('https://' + location.hostname + baseURL + `${pathEnd}`)
         console.log('2')
 
     }
