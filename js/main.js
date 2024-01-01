@@ -17,11 +17,19 @@ for (var i = 0; i < pathparts.length - 1; i++) {
 // console.log(baseURL)
 // console.log(location.pathname)
 // console.log(location.hostname)
+console.log(location.origin)
 function changeUrl(pathEnd) {
     {
-        newUrl = baseURL + `${pathEnd}`
-        window.location.assign(
-            newUrl);
+        if (baseURL == '/') {
+            location.replace('https://' + location.origin + `${pathEnd}`)
+
+        } else {
+            location.replace(baseURL + `${pathEnd}`)
+
+        }
+        // newUrl = baseURL + `${pathEnd}`
+        // window.location.assign(
+        //     newUrl);
     }
 }
 // ______________________________________________REGISTER_____________________________________________________
