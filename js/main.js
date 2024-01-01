@@ -14,23 +14,33 @@ var baseURL = ''
 for (var i = 0; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
-console.log(baseURL)
+// console.log(baseURL)
 // console.log(location.pathname)
 // console.log(location.hostname)
-console.log(location.origin)
+// console.log(location.origin)
 function changeUrl(pathEnd) {
     {
-        if (location.origin[0] == 'https') {
-            location.replace( location.origin + `${pathEnd}`)
+        
+        newUrl = baseURL + `${pathEnd}`
+        window.location.assign(
+            newUrl);
+        // if (baseURL == '/') {
+        //     location.replace(location.origin + `${pathEnd}`)
 
-        } else {
-            location.replace(baseURL + `${pathEnd}`)
+        // } else {
+        //     location.replace(baseURL + `${pathEnd}`)
 
-        }
-        // newUrl = baseURL + `${pathEnd}`
-        // window.location.assign(
-        //     newUrl);
+        // }
+
+        // if (baseURL == '/') {
+        //     location.replace('https://' + location.hostname + `${pathEnd}`)
+
+        // } else {
+        //     location.replace(baseURL + `${pathEnd}`)
+
+        // }
     }
+
 }
 // ______________________________________________REGISTER_____________________________________________________
 
@@ -83,7 +93,7 @@ function validateName() {
         return true
     } else {
         validationMsg.innerHTML = `<span class="text-danger m-3">
-        Your name must start with Only alphapet or '_' and can contain four nums at most</span>`
+        Your name must start with Only alphapet or '_' and can contain four nums at most and its total at least 4 charcters</span>`
         return false;
     }
 }
@@ -94,7 +104,7 @@ function validatePass() {
         return true
     } else {
         validationMsg.innerHTML = `<span class="text-danger m-3">
-        password should contain atleast one digit and one upperCase character</span>`
+        password should contain atleast one digit and one upperCase alphapet and its total at least 6 charcters</span>`
         return false;
     }
 }
