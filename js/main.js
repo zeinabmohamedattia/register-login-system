@@ -14,14 +14,14 @@ var baseURL = ''
 for (var i = 0; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
-// console.log(baseURL)
+console.log(baseURL)
 // console.log(location.pathname)
 // console.log(location.hostname)
 console.log(location.origin)
 function changeUrl(pathEnd) {
     {
-        if (baseURL == '/') {
-            location.replace('https://' + location.origin + `${pathEnd}`)
+        if (location.origin[0] == 'https') {
+            location.replace( location.origin + `${pathEnd}`)
 
         } else {
             location.replace(baseURL + `${pathEnd}`)
