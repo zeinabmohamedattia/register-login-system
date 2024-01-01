@@ -9,38 +9,20 @@ var validationMsg = document.querySelector('#validationMsg')
 var users;
 var sessionUser = document.querySelector('#sessionUser')
 // ______________________________________________URL_____________________________________________________
-
 var pathparts = location.pathname.split('/');
 var baseURL = ''
-
 for (var i = 0; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
-console.log(baseURL)
-console.log(location.pathname)
-console.log(location.hostname)
+// console.log(baseURL)
+// console.log(location.pathname)
+// console.log(location.hostname)
 function changeUrl(pathEnd) {
     {
-        if (baseURL == '/') {
-            location.replace('https://' + location.hostname +  `${pathEnd}`)
-            console.log(2222222222222)
-
-        } else {
-            location.replace( baseURL +`${pathEnd}`)
-
-        }
-
-        // // location.replace(baseURL + `${pathEnd}`)
-        // location.replace( baseURL +   `${pathEnd}`)
-        // console.log('2')
-
+        newUrl = baseURL + `${pathEnd}`
+        window.location.assign(
+            newUrl);
     }
-    // newUrl = baseURL + `${pathEnd}`
-    // window.location.assign(
-    //     newUrl);
-
-
-
 }
 // ______________________________________________REGISTER_____________________________________________________
 
@@ -49,26 +31,21 @@ if (localStorage.getItem('allUsers')) {
 } else {
     users = [];
 }
-
-
 function register() {
-    // if (isEmptySignup() && validateEmail() && isEmailExist()) {
-        var user = {
-            userName: signupName.value,
-            userEmail: signupEmail.value,
-            userPassword: signupPassword.value,
-        }
-        users.push(user);
-        localStorage.setItem('allUsers', JSON.stringify(users));
-        validationMsg.innerHTML = `<span class="text-success m-3"> Successfully Registered</span>`
-        setTimeout(function () {
-            changeUrl('/index.html')
-        }, '1000')
-
+    if (isEmptySignup() && validateName() && validateEmail() && isEmailExist() && validatePass() ) {
+    var user = {
+        userName: signupName.value,
+        userEmail: signupEmail.value,
+        userPassword: signupPassword.value,
+    }
+    users.push(user);
+    localStorage.setItem('allUsers', JSON.stringify(users));
+    validationMsg.innerHTML = `<span class="text-success m-3"> Successfully Registered</span>`
+    setTimeout(function () {
+        changeUrl('/index.html')
+    }, '1000')
 }
-    
-
-// }
+}
 
 function isEmptySignup() {
 
@@ -91,6 +68,28 @@ function validateEmail() {
         return false;
     }
 }
+function validateName() {
+    var regex = /^[a-zA-Z\_]{4,}\d{0,4}?$/;
+    if (regex.test(signupName.value)) {
+
+        return true
+    } else {
+        validationMsg.innerHTML = `<span class="text-danger m-3">
+        Your name must start with Only alphapet or '_' and can contain four nums at most</span>`
+        return false;
+    }
+}
+function validatePass() {
+    var regex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    if (regex.test(signupPassword.value)) {
+
+        return true
+    } else {
+        validationMsg.innerHTML = `<span class="text-danger m-3">
+        password should contain atleast one digit and one upperCase character</span>`
+        return false;
+    }
+}
 function isEmailExist() {
     for (var i = 0; i < users.length; i++) {
         if (users[i].userEmail.toLowerCase() == signupEmail.value.toLowerCase()) {
@@ -100,10 +99,8 @@ function isEmailExist() {
             return true
         }
     }
-
 }
 // ______________________________________________LOGIN_____________________________________________________
-
 function login() {
     if (isEmptyLogin() && isCorrect()) {
 
@@ -113,7 +110,6 @@ function login() {
         }, '200')
     }
 }
-
 function isEmptyLogin() {
 
     if (loginEmail.value != "" && loginPassword.value != "") {
@@ -123,18 +119,15 @@ function isEmptyLogin() {
         return false
     }
 }
-
 function isCorrect() {
     for (var i = 0; i < users.length; i++) {
         if (users[i].userEmail.toLowerCase() == loginEmail.value.toLowerCase() &&
             users[i].userPassword.toLowerCase() == loginPassword.value.toLowerCase()) {
             validationMsg.innerHTML = `<span class=" m-3 text-success"> correct Email and Password</span>`
             sessionStorage.setItem('currentUser', users[i].userName)
-
             return true
         } else {
             validationMsg.innerHTML = `<span class="text-danger m-3">incorrect Email and Password</span>`
-
         }
     }
 }
@@ -147,8 +140,6 @@ if (sessionStorage.getItem('currentUser') && (pathparts[pathparts.length - 1]) =
 function logout() {
     if (sessionStorage.getItem('currentUser')) {
         sessionStorage.setItem('currentUser', '')
-
         changeUrl('/index.html')
-
     }
 }
