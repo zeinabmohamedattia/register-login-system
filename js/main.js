@@ -11,38 +11,13 @@ var sessionUser = document.querySelector('#sessionUser')
 // ______________________________________________URL_____________________________________________________
 var pathparts = location.href.split('/');
 var baseURL = ''
-for (var i = 1; i < pathparts.length-1; i++) {
+for (var i = 1; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
-console.log( pathparts)
-
-console.log('baseurl'+baseURL)
-console.log('pathname'+location.pathname)
-console.log('href'+location.href)
-// console.log(location.origin)
 function changeUrl(pathEnd) {
     {
-
         location.href = baseURL + `${pathEnd}`
-        // window.location.replace(
-        //     newUrl);
-        // if (baseURL == '/') {
-        //     location.replace(location.origin + `${pathEnd}`)
-
-        // } else {
-        //     location.replace(baseURL + `${pathEnd}`)
-
-        // }
-
-        // if (baseURL == '/') {
-        //     location.replace('https://' + location.hostname + `${pathEnd}`)
-
-        // } else {
-        //     location.replace(baseURL + `${pathEnd}`)
-
-        // }
     }
-
 }
 // ______________________________________________REGISTER_____________________________________________________
 
@@ -52,7 +27,6 @@ if (localStorage.getItem('allUsers')) {
     users = [];
 }
 function register() {
-    console.log('register');
     var user = {
         userName: signupName.value,
         userEmail: signupEmail.value,
@@ -60,7 +34,7 @@ function register() {
     }
 
     if (isEmptySignup() && validateName() && validateEmail() && validatePass() && isNotEmailExist()) {
-        
+
         users.push(user);
         localStorage.setItem('allUsers', JSON.stringify(users));
         validationMsg.innerHTML = `<span class="text-success m-3"> Successfully Registered</span>`
@@ -68,7 +42,7 @@ function register() {
             changeUrl('/index.html')
         }, '1000')
 
-    } 
+    }
 }
 
 function isEmptySignup() {
