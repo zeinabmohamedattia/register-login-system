@@ -1,17 +1,17 @@
-var signupName = document.querySelector('#signupName')
-var signupEmail = document.querySelector('#signupEmail')
-var signupPassword = document.querySelector('#signupPassword')
-var signUpBtn = document.querySelector('#signUpBtn')
-var loginBtn = document.querySelector('#loginBtn')
-var loginEmail = document.querySelector('#loginEmail')
-var loginPassword = document.querySelector('#loginPassword')
-var validationMsg = document.querySelector('#validationMsg')
-var users;
-var sessionUser = document.querySelector('#sessionUser')
+let signupName = document.querySelector('#signupName')
+let signupEmail = document.querySelector('#signupEmail')
+let signupPassword = document.querySelector('#signupPassword')
+let signUpBtn = document.querySelector('#signUpBtn')
+let loginBtn = document.querySelector('#loginBtn')
+let loginEmail = document.querySelector('#loginEmail')
+let loginPassword = document.querySelector('#loginPassword')
+let validationMsg = document.querySelector('#validationMsg')
+let users;
+let sessionUser = document.querySelector('#sessionUser')
 // ______________________________________________URL_____________________________________________________
-var pathparts = location.href.split('/');
-var baseURL = ''
-for (var i = 1; i < pathparts.length - 1; i++) {
+let pathparts = location.href.split('/');
+let baseURL = ''
+for (let i = 1; i < pathparts.length - 1; i++) {
     baseURL += '/' + pathparts[i]
 }
 function changeUrl(pathEnd) {
@@ -27,7 +27,7 @@ if (localStorage.getItem('allUsers')) {
     users = [];
 }
 function register() {
-    var user = {
+    let user = {
         userName: signupName.value,
         userEmail: signupEmail.value,
         userPassword: signupPassword.value,
@@ -56,7 +56,7 @@ function isEmptySignup() {
     }
 }
 function validateEmail() {
-    var regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (regex.test(signupEmail.value)) {
         return true
     } else {
@@ -66,7 +66,7 @@ function validateEmail() {
     }
 }
 function validateName() {
-    var regex = /^[a-zA-Z\_]{4,}\d{0,4}?$/;
+    let regex = /^[a-zA-Z\_]{4,}\d{0,4}?$/;
     if (regex.test(signupName.value)) {
         return true
     } else {
@@ -76,7 +76,7 @@ function validateName() {
     }
 }
 function validatePass() {
-    var regex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    let regex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     if (regex.test(signupPassword.value)) {
         return true
     } else {
@@ -89,7 +89,7 @@ function isNotEmailExist() {
     if (users.length == 0) {
         return true
     }
-    for (var i = 0; i < users.length; i++) {
+    for (let i = 0; i < users.length; i++) {
         if (users[i].userEmail.toLowerCase() == signupEmail.value.toLowerCase()) {
             validationMsg.innerHTML = `<span class="text-danger m-3">email already exist ,try another email</span>`
             return false
@@ -118,7 +118,7 @@ function isEmptyLogin() {
     }
 }
 function isCorrect() {
-    for (var i = 0; i < users.length; i++) {
+    for (let i = 0; i < users.length; i++) {
         if (users[i].userEmail.toLowerCase() == loginEmail.value.toLowerCase() &&
             users[i].userPassword.toLowerCase() == loginPassword.value.toLowerCase()) {
             validationMsg.innerHTML = `<span class=" m-3 text-success"> correct Email and Password</span>`
